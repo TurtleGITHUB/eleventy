@@ -1,0 +1,189 @@
+---
+layout: base.njk
+---
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ title }}</h1>
+        <div class="post-meta">
+            <time class="post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">
+                {{ page.date | dateDisplay }}
+            </time>
+            {%- if tags -%}
+            <div class="post-tags">
+                {%- for tag in tags -%}
+                {%- if tag !== "posts" -%}
+                <span class="tag">{{ tag }}</span>
+                {%- endif -%}
+                {%- endfor -%}
+            </div>
+            {%- endif -%}
+        </div>
+        {%- if description -%}
+        <p class="post-description">{{ description }}</p>
+        {%- endif -%}
+    </header>
+
+    <div class="post-content">
+        {{ content | safe }}
+    </div>
+
+    <footer class="post-footer">
+        <nav class="post-nav">
+            <a href="/posts/" class="btn btn-secondary">← Back to Posts</a>
+        </nav>
+    </footer>
+</article>
+
+<style>
+.post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.post-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.post-date {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.tag {
+    background: #e5e7eb;
+    color: #374151;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.post-description {
+    font-size: 1.1rem;
+    color: #4b5563;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.post-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+.post-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.post-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #374151;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+}
+
+.post-content blockquote {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    background: #f9fafb;
+    border-left: 4px solid #2563eb;
+    font-style: italic;
+    color: #4b5563;
+}
+
+.post-content code {
+    background: #f3f4f6;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    color: #e11d48;
+}
+
+.post-content pre {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+    color: #f9fafb;
+}
+
+.post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.post-nav {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .post {
+        padding: 1rem 0;
+    }
+    
+    .post-title {
+        font-size: 2rem;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .post-content {
+        font-size: 1rem;
+    }
+}
+</style>

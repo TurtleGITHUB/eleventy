@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}{{ site.name }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% if title %}{{ title }} - {% endif %}{{ site.name }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="{% if title %}{{ title }} - {% endif %}{{ site.name }}">
+    <meta property="twitter:description" content="{{ description or site.description }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">{{ site.name }}</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/posts/">Blog</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        {{ content | safe }}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; {{ year }} {{ site.name }}. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

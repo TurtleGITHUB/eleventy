@@ -1,0 +1,115 @@
+---
+layout: base.njk
+title: Home
+description: Welcome to my Eleventy site
+---
+
+<section class="hero">
+    <h1>Welcome to {{ site.name }}</h1>
+    <p class="hero-subtitle">A modern static website built with Eleventy and deployed on Netlify</p>
+    <div class="hero-buttons">
+        <a href="/about/" class="btn">Learn More</a>
+        <a href="/posts/" class="btn btn-secondary">Read Blog</a>
+    </div>
+</section>
+
+<section class="features">
+    <h2>Features</h2>
+    <div class="feature-grid">
+        <div class="card">
+            <h3>⚡ Fast Performance</h3>
+            <p>Built with Eleventy for lightning-fast static site generation and optimal performance.</p>
+        </div>
+        <div class="card">
+            <h3>🚀 Easy Deployment</h3>
+            <p>Configured for seamless deployment on Netlify with automatic builds from GitHub.</p>
+        </div>
+        <div class="card">
+            <h3>📱 Responsive Design</h3>
+            <p>Mobile-first design that looks great on all devices and screen sizes.</p>
+        </div>
+    </div>
+</section>
+
+<section class="recent-posts">
+    <h2>Recent Posts</h2>
+    {%- if collections.posts.length > 0 -%}
+    <ul class="post-list">
+        {%- for post in collections.posts | reverse | head(3) -%}
+        <li class="post-item">
+            <div class="post-date">{{ post.date | dateDisplay }}</div>
+            <h3 class="post-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+            <p class="post-excerpt">{{ post.data.description or "No description available." }}</p>
+            <a href="{{ post.url }}">Read more →</a>
+        </li>
+        {%- endfor -%}
+    </ul>
+    <p><a href="/posts/">View all posts →</a></p>
+    {%- else -%}
+    <p>No posts yet. <a href="/posts/">Check back later!</a></p>
+    {%- endif -%}
+</section>
+
+<style>
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin: -20px -20px 3rem -20px;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.features {
+    margin: 3rem 0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.recent-posts {
+    margin: 3rem 0;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 0;
+        margin: -15px -15px 2rem -15px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
